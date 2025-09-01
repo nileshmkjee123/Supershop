@@ -4,15 +4,10 @@ const ProductPrice = ({
   value,
   className,
 }: {
-  value: number | { toNumber: () => number }; // allow Decimal
+  value: number;
   className?: string;
 }) => {
-  const numericValue =
-    typeof value === "object" && "toNumber" in value
-      ? value.toNumber()
-      : Number(value);
-
-  const stringValue = numericValue.toFixed(2);
+  const stringValue = value.toFixed(2);
   const [intValue, floatValue] = stringValue.split(".");
 
   return (
